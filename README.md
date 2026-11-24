@@ -183,16 +183,3 @@ task-4-recipe-platform/
 
 ---
 
-## 🔒 Security Best Practices
-- **Environment Isolation:** Secrets and database credentials are stored exclusively in `.env`, which is strictly excluded in `.gitignore`.
-- **Input Sanitization:** Server routes validate and clean ingredients arrays, instruction strings, and text parameters before database insertion.
-
----
-
-## 👩‍💻 Author & Internship Details
-- **Developer:** Radhika Patil
-- **GitHub:** [@radhapatil0107](https://github.com/radhapatil0107)
-- **Internship:** CodeNova 1-Month Remote Internship
-- **Batch:** Batch 02 (November – December 2026)
-- **Track:** Full Stack Web Development (MERN)
-- **Task Assigned:** Task 4 — Community Recipe Sharing Platform
