@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  /* Dark Theme Palette (Default) */
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --bg-card: #181d26;
+  --bg-card-hover: #1f2530;
+  --bg-modal: #161b22;
+  --bg-input: #0f131a;
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(249, 115, 22, 0.35);
+
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+
+  --accent-primary: #f97316;
+  --accent-hover: #ea580c;
+  --accent-light: rgba(249, 115, 22, 0.15);
+  --accent-glow: rgba(249, 115, 22, 0.3);
+
+  --diff-easy-bg: rgba(16, 185, 129, 0.15);
+  --diff-easy-color: #34d399;
+  --diff-medium-bg: rgba(245, 158, 11, 0.15);
+  --diff-medium-color: #fbbf24;
+  --diff-hard-bg: rgba(239, 68, 68, 0.15);
+  --diff-hard-color: #f87171;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+[data-theme='light'] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fcfcfd;
+  --bg-modal: #ffffff;
+  --bg-input: #f8fafc;
+
+  --border-color: #e2e8f0;
+  --border-hover: rgba(249, 115, 22, 0.4);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --accent-primary: #ea580c;
+  --accent-hover: #c2410c;
+  --accent-light: rgba(234, 88, 12, 0.1);
+  --accent-glow: rgba(234, 88, 12, 0.2);
+
+  --diff-easy-bg: #ecfdf5;
+  --diff-easy-color: #059669;
+  --diff-medium-bg: #fffbeb;
+  --diff-medium-color: #d97706;
+  --diff-hard-bg: #fef2f2;
+  --diff-hard-color: #dc2626;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: var(--font-sans);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
