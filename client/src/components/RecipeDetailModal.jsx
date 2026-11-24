@@ -8,10 +8,8 @@ const RecipeDetailModal = ({
   onEdit,
   onDelete
 }) => {
-  if (!recipe) return null;
-
   // Servings multiplier state
-  const baseServings = recipe.servings || 2;
+  const baseServings = recipe?.servings || 2;
   const [currentServings, setCurrentServings] = useState(baseServings);
 
   // Checked ingredients tracker
@@ -75,6 +73,8 @@ const RecipeDetailModal = ({
   const stepsProgress = totalSteps > 0 ? Math.round((completedStepsCount / totalSteps) * 100) : 0;
 
   const fallbackImage = 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80';
+
+  if (!recipe) return null;
 
   return (
     <div className="modal-backdrop" onClick={onClose}>

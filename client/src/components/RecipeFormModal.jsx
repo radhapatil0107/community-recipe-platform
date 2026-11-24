@@ -12,8 +12,6 @@ const PRESET_IMAGES = [
 ];
 
 const RecipeFormModal = ({ isOpen, onClose, onSubmit, initialData }) => {
-  if (!isOpen) return null;
-
   const isEditing = Boolean(initialData && initialData._id);
 
   const [formData, setFormData] = useState({
@@ -182,6 +180,8 @@ const RecipeFormModal = ({ isOpen, onClose, onSubmit, initialData }) => {
       setIsSubmitting(false);
     }
   };
+
+  if (!isOpen) return null;
 
   return (
     <div className="modal-backdrop" onClick={onClose}>

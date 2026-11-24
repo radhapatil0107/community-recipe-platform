@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HeroBanner = ({ stats, onQuickCategorySelect }) => {
+const HeroBanner = ({ stats }) => {
   return (
     <section className="hero-banner">
       <div className="hero-overlay"></div>

@@ -48,6 +48,11 @@ function App() {
     }
   });
 
+  // Theme state: dark / light
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('flavorverse_theme') || 'dark';
+  });
+
   useEffect(() => {
     localStorage.setItem('flavorverse_liked_recipes', JSON.stringify(likedRecipeIds));
   }, [likedRecipeIds]);
@@ -259,10 +264,7 @@ function App() {
       {/* Main Content Area */}
       <main className="main-content">
         {/* Hero Section with platform statistics */}
-        <HeroBanner
-          stats={stats}
-          onQuickCategorySelect={(cat) => setCategory(cat)}
-        />
+        <HeroBanner stats={stats} />
 
         {/* Filter and Search Bar */}
         <FilterBar
