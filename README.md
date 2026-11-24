@@ -40,29 +40,6 @@ Developed by **Radhika Patil** as **Task 4** for the **CodeNova Remote Internshi
 
 ---
 
-## 📸 Application Screenshots
-
-### 1. 🌟 Dashboard, Live Statistics & Search Bar
-*Real-time stats banner displaying community recipe counts, community likes, and global cuisines, paired with instant multi-dimensional keyword search and category chips.*
-
-![Dashboard and Search](screenshots/01-dashboard-hero.png)
-
----
-
-### 2. 🍲 Explore Recipe Feed & Authentic Indian Delicacies
-*Responsive culinary grid highlighting authentic Indian specialties (Mumbai Pav Bhaji, South Indian Masala Dosa, Chole Bhature, Gulab Jamun) and global classics with live like counters and difficulty chips.*
-
-![Recipe Feed and Indian Dishes](screenshots/02-recipe-feed.png)
-
----
-
-### 3. ✍️ Share a New Recipe Modal
-*Intuitive recipe contribution modal with dynamic ingredient builders, step-by-step instruction rows, servings/time selectors, and curated food photo presets.*
-
-![Share Recipe Modal](screenshots/03-share-recipe-modal.png)
-
----
-
 ## 🛠️ Tech Stack & Architecture
 
 | Layer | Technologies Used |
@@ -116,7 +93,7 @@ cd community-recipe-platform
    PORT=5001
    MONGO_URI=mongodb+srv://<username>:<password>@cluster0.ee0sh6j.mongodb.net/recipeplatform?retryWrites=true&w=majority
    ```
-3. *(Optional)* Seed the database with 8 authentic community recipes:
+3. *(Optional)* Seed the database with authentic community recipes:
    ```bash
    npm run seed
    ```
@@ -176,7 +153,7 @@ task-4-recipe-platform/
 │   ├── routes/
 │   │   └── recipes.js          # REST endpoints (CRUD, likes, stats)
 │   ├── seed/
-│   │   └── seed.js             # 8 authentic community sample recipes
+│   │   └── seed.js             # Authentic community sample recipes
 │   ├── .env.example            # Environment template (secrets safe)
 │   ├── index.js                # Express app entry & database connector
 │   └── package.json
@@ -188,3 +165,39 @@ task-4-recipe-platform/
 
 ---
 
+## 🔒 Security Best Practices
+- **Environment Isolation:** Secrets and database credentials are stored exclusively in `.env`, which is strictly excluded in `.gitignore`.
+- **Input Sanitization:** Server routes validate and clean ingredients arrays, instruction strings, and text parameters before database insertion.
+
+---
+
+## 👩‍💻 Author & Internship Details
+- **Developer:** Radhika Patil
+- **GitHub:** [@radhapatil0107](https://github.com/radhapatil0107)
+- **Internship:** CodeNova 1-Month Remote Internship
+- **Batch:** Batch 02 (November – December 2026)
+- **Track:** Full Stack Web Development (MERN)
+- **Task Assigned:** Task 4 — Community Recipe Sharing Platform
+
+---
+
+## 📸 Application Screenshots
+
+### 1. 🌟 Dashboard, Live Statistics & Search Bar
+*Real-time stats banner displaying community recipe counts, community likes, and global cuisines, paired with instant multi-dimensional keyword search and category chips.*
+
+![Dashboard and Search](screenshots/01-dashboard-hero.png)
+
+---
+
+### 2. 🍲 Explore Recipe Feed & Authentic Indian Delicacies
+*Responsive culinary grid highlighting authentic Indian specialties (Mumbai Pav Bhaji, South Indian Masala Dosa, Chole Bhature, Gulab Jamun) and global classics with live like counters and difficulty chips.*
+
+![Recipe Feed and Indian Dishes](screenshots/02-recipe-feed.png)
+
+---
+
+### 3. ✍️ Share a New Recipe Modal
+*Intuitive recipe contribution modal with dynamic ingredient builders, step-by-step instruction rows, servings/time selectors, and curated food photo presets.*
+
+![Share Recipe Modal](screenshots/03-share-recipe-modal.png)
