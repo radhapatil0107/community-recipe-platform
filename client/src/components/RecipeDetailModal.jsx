@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const RecipeDetailModal = ({
   recipe,
+  isLiked,
   onClose,
   onLike,
   onEdit,
@@ -19,8 +20,6 @@ const RecipeDetailModal = ({
   // Completed steps tracker
   const [completedSteps, setCompletedSteps] = useState({});
 
-  // Local like state for smooth animation
-  const [likesCount, setLikesCount] = useState(recipe.likes || 0);
   const [isLiking, setIsLiking] = useState(false);
 
   const toggleIngredient = (index) => {
@@ -45,7 +44,6 @@ const RecipeDetailModal = ({
   const handleLike = async () => {
     if (isLiking) return;
     setIsLiking(true);
-    setLikesCount((prev) => prev + 1);
     try {
       await onLike(recipe._id);
     } finally {
@@ -143,11 +141,11 @@ const RecipeDetailModal = ({
 
           <div className="modal-cta-group">
             <button
-              className={`modal-like-btn ${isLiking ? 'pulsing' : ''}`}
+              className={`modal-like-btn ${isLiked ? 'is-liked' : ''} ${isLiking ? 'pulsing' : ''}`}
               onClick={handleLike}
-              title="Like this recipe"
+              title={isLiked ? 'Unlike this recipe' : 'Like this recipe'}
             >
-              ❤️ {likesCount} Likes
+              {isLiked ? '❤️ Liked' : '🤍 Like'} ({recipe.likes || 0})
             </button>
             <button className="modal-secondary-btn" onClick={() => window.print()} title="Print recipe">
               🖨️ Print

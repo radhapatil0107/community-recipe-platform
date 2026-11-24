@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const RecipeCard = ({ recipe, onSelect, onLike, onEdit, onDelete }) => {
+const RecipeCard = ({ recipe, isLiked, onSelect, onLike, onEdit, onDelete }) => {
   const [imageError, setImageError] = useState(false);
   const [isLiking, setIsLiking] = useState(false);
 
@@ -52,12 +52,12 @@ const RecipeCard = ({ recipe, onSelect, onLike, onEdit, onDelete }) => {
         </div>
 
         <button
-          className={`card-like-btn ${isLiking ? 'pulsing' : ''}`}
+          className={`card-like-btn ${isLiked ? 'is-liked' : ''} ${isLiking ? 'pulsing' : ''}`}
           onClick={handleLikeClick}
-          aria-label="Like recipe"
-          title="Like recipe"
+          aria-label={isLiked ? "Unlike recipe" : "Like recipe"}
+          title={isLiked ? "Unlike recipe" : "Like recipe"}
         >
-          <span className="heart-icon">❤️</span>
+          <span className="heart-icon">{isLiked ? '❤️' : '🤍'}</span>
           <span className="like-count">{recipe.likes || 0}</span>
         </button>
       </div>

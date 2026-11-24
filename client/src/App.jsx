@@ -38,10 +38,19 @@ function App() {
   // Toast state
   const [toast, setToast] = useState({ message: '', type: 'success' });
 
-  // Theme state: dark / light
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('flavorverse_theme') || 'dark';
+  // Liked recipes tracking (one like per user stored in localStorage)
+  const [likedRecipeIds, setLikedRecipeIds] = useState(() => {
+    try {
+      const stored = localStorage.getItem('flavorverse_liked_recipes');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
   });
+
+  useEffect(() => {
+    localStorage.setItem('flavorverse_liked_recipes', JSON.stringify(likedRecipeIds));
+  }, [likedRecipeIds]);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -128,30 +137,48 @@ function App() {
     setActiveTab('explore');
   };
 
-  // Like handler with optimistic UI update
+  // Like handler with toggle (one like per person)
   const handleLike = async (recipeId) => {
-    // Optimistic state update in list
-    setRecipes((prev) =>
-      prev.map((r) => (r._id === recipeId ? { ...r, likes: (r.likes || 0) + 1 } : r))
+    const isAlreadyLiked = likedRecipeIds.includes(recipeId);
+    const action = isAlreadyLiked ? 'unlike' : 'like';
+    const delta = isAlreadyLiked ? -1 : 1;
+
+    // Update local user's liked IDs list
+    setLikedRecipeIds((prev) =>
+      isAlreadyLiked ? prev.filter((id) => id !== recipeId) : [...prev, recipeId]
     );
 
-    // If detail modal is open for this recipe, update it too
+    // Optimistic state update in recipe list
+    setRecipes((prev) =>
+      prev.map((r) =>
+        r._id === recipeId ? { ...r, likes: Math.max(0, (r.likes || 0) + delta) } : r
+      )
+    );
+
+    // Update open modal if viewing this recipe
     if (selectedRecipe && selectedRecipe._id === recipeId) {
-      setSelectedRecipe((prev) => ({ ...prev, likes: (prev.likes || 0) + 1 }));
+      setSelectedRecipe((prev) => ({
+        ...prev,
+        likes: Math.max(0, (prev.likes || 0) + delta)
+      }));
     }
 
     try {
-      const res = await toggleLikeRecipe(recipeId, 'like');
+      const res = await toggleLikeRecipe(recipeId, action);
       if (res.success) {
-        // Sync exact server count
         setRecipes((prev) =>
           prev.map((r) => (r._id === recipeId ? { ...r, likes: res.likes } : r))
         );
+        showToast(action === 'like' ? 'Added to your favorites! ❤️' : 'Removed from favorites', 'info');
         loadStats();
       }
     } catch (err) {
-      console.error('Error liking recipe:', err);
-      showToast('Could not register like', 'error');
+      console.error('Error toggling like:', err);
+      // Revert optimistic update on error
+      setLikedRecipeIds((prev) =>
+        isAlreadyLiked ? [...prev, recipeId] : prev.filter((id) => id !== recipeId)
+      );
+      showToast('Could not update like', 'error');
     }
   };
 
@@ -290,6 +317,7 @@ function App() {
               <RecipeCard
                 key={recipe._id}
                 recipe={recipe}
+                isLiked={likedRecipeIds.includes(recipe._id)}
                 onSelect={(rec) => setSelectedRecipe(rec)}
                 onLike={handleLike}
                 onEdit={handleOpenEdit}
@@ -318,6 +346,7 @@ function App() {
       {selectedRecipe && (
         <RecipeDetailModal
           recipe={selectedRecipe}
+          isLiked={likedRecipeIds.includes(selectedRecipe._id)}
           onClose={() => setSelectedRecipe(null)}
           onLike={handleLike}
           onEdit={handleOpenEdit}

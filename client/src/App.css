@@ -589,6 +589,12 @@
   transform: scale(1.06);
 }
 
+.card-like-btn.is-liked {
+  background: rgba(239, 68, 68, 0.9);
+  border-color: rgba(239, 68, 68, 1);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+
 .card-like-btn.pulsing {
   animation: pulse-heart 0.3s ease-in-out;
 }
@@ -958,6 +964,12 @@
 .modal-like-btn:hover {
   background: rgba(239, 68, 68, 0.25);
   transform: scale(1.04);
+}
+
+.modal-like-btn.is-liked {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #ef4444;
 }
 
 .modal-secondary-btn {
