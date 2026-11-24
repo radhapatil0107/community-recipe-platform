@@ -40,21 +40,26 @@ Developed by **Radhika Patil** as **Task 4** for the **CodeNova Remote Internshi
 
 ---
 
-## 📸 Screenshots Showcase
+## 📸 Application Screenshots
 
-*(Add your screenshots in the `screenshots/` directory)*
+### 1. 🌟 Dashboard, Live Statistics & Search Bar
+*Real-time stats banner displaying community recipe counts, community likes, and global cuisines, paired with instant multi-dimensional keyword search and category chips.*
 
-| 1. Explore Feed & Search | 2. Category & Cuisine Filtering |
-| :---: | :---: |
-| ![Explore Feed](screenshots/dashboard-feed.png) | ![Filters](screenshots/category-filters.png) |
+![Dashboard and Search](screenshots/01-dashboard-hero.png)
 
-| 3. Interactive Detail & Ingredient Checklist | 4. Share Recipe Modal |
-| :---: | :---: |
-| ![Recipe Detail Checklist](screenshots/recipe-checklist.png) | ![Create Recipe](screenshots/recipe-modal.png) |
+---
 
-| 5. Dark & Light Theme Contrast |
-| :---: |
-| ![Theme Showcase](screenshots/theme-mode.png) |
+### 2. 🍲 Explore Recipe Feed & Authentic Indian Delicacies
+*Responsive culinary grid highlighting authentic Indian specialties (Mumbai Pav Bhaji, South Indian Masala Dosa, Chole Bhature, Gulab Jamun) and global classics with live like counters and difficulty chips.*
+
+![Recipe Feed and Indian Dishes](screenshots/02-recipe-feed.png)
+
+---
+
+### 3. ✍️ Share a New Recipe Modal
+*Intuitive recipe contribution modal with dynamic ingredient builders, step-by-step instruction rows, servings/time selectors, and curated food photo presets.*
+
+![Share Recipe Modal](screenshots/03-share-recipe-modal.png)
 
 ---
 
